@@ -1,8 +1,4 @@
-FROM    ubuntu:14.04
-# RUN     apt-get clean
-# RUN     rm /var/lib/apt/lists/* -vfR
-# RUN     mkdir -p /var/lib/apt/lists/partial
-RUN     apt-get adv --keyserver keyserver.ubuntu.com --recv-keys 16126D3A3E5C1192
+FROM    {{FROM_IMAGE}}
 RUN     apt-get -y update
 RUN     apt-get -y upgrade
 
@@ -74,6 +70,8 @@ RUN     chmod 0775 /var/lib/graphite/storage /var/lib/graphite/storage/whisper
 RUN     chmod 0664 /var/lib/graphite/storage/graphite.db
 RUN     cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
 
+VOLUME /var/lib/graphite/storage
+
 # Configure Grafana
 ADD     ./grafana/config.js /src/grafana/config.js
 
@@ -103,4 +101,4 @@ EXPOSE  8126
 #   Run!   #
 # -------- #
 
-CMD     ["/usr/bin/supervisord"]
+CMD     ["/usr/bin/supervisord", "-n"]
