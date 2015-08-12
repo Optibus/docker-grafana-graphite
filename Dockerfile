@@ -1,6 +1,10 @@
-FROM     ubuntu:14.04
-RUN      apt-get -y update
-RUN      apt-get -y upgrade
+FROM    ubuntu:14.04
+# RUN     apt-get clean
+# RUN     rm /var/lib/apt/lists/* -vfR
+# RUN     mkdir -p /var/lib/apt/lists/partial
+RUN     apt-get adv --keyserver keyserver.ubuntu.com --recv-keys 16126D3A3E5C1192
+RUN     apt-get -y update
+RUN     apt-get -y upgrade
 
 # ---------------- #
 #   Installation   #
