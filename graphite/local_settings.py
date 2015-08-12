@@ -40,3 +40,6 @@ TIME_ZONE = 'UTC'
 #DATABASE_PASSWORD = 'graphite-is-awesome'
 #DATABASE_HOST = 'mysql.mycompany.com'
 #DATABASE_PORT = '3306'
+
+
+SECRET_KEY = 'asdkjfu98q324rufkjdshmsndfbgjhdfgj728756wer09wo56wtloatedpo;d6tw0[pwqkdckjow9clascjlsdkc'
